@@ -1,12 +1,7 @@
-import ReactDOM from 'react-dom';
-import GuestList from './state/GuestList';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const App = () => {
-	return (
-		<div>
-			<GuestList />
-		</div>
-	);
-}
-
-ReactDOM.render(<App />, document.querySelector('#root'));
+const root = ReactDOM.createRoot(
+	document.getElementById('root') as HTMLElement
+);
+root.render(<App />);
