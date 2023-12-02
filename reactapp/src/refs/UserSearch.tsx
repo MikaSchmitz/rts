@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const users = [
     { name: 'Sarah', age: 20},
@@ -11,6 +11,16 @@ const UserSearch = () => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [name, setName] = useState('');
     const [user, setUser] = useState<{name: string, age: number} | undefined>();
+
+    useEffect(() => {
+        if (!inputRef.current) {
+            return;
+        }
+        // focus on the given input when loading the page for the first time
+        inputRef.current.focus();
+
+        // [] to prevenet the function from being called multiple times
+    }, []);
 
     const findUser = () => {
         // find works as a foreach, the code provided is applied to each entry inside the array
