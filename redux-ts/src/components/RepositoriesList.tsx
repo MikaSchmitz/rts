@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions'
 
 const RepositoriesList = () => {
     const [term, setTerm] = useState('');
     const { searchRepositories } = useActions();
-    const state = useSelector((state: any) => state.repositories);
+    const { data, error, loading } = useTypedSelector((state) => state.repositories);
 
     const search = (event: React.FormEvent<HTMLFormElement>) => {
         // prevent the page from refreshing on submit
