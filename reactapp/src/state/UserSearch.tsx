@@ -9,6 +9,7 @@ const users = [
 
 const UserSearch = () => {
     const [name, setName] = useState('');
+    const [user, setUser] = useState<{name: string, age: number} | undefined>();
 
     const findUser = () => {
         // find works as a foreach, the code provided is applied to each entry inside the array
@@ -16,7 +17,7 @@ const UserSearch = () => {
             return user.name === name;
         })
 
-        console.log(foundUser);
+        setUser(foundUser);
     }
 
     return (
@@ -24,6 +25,21 @@ const UserSearch = () => {
             <h3>User Search</h3>
             <input value={name} onChange={(e) => setName(e.target.value)} />
             <button onClick={findUser}>Find User</button>
+            <div>
+                {user && (
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                        </tr>
+                        <tr>
+                            <td>{user.name}</td>
+                            <td>{user.age}</td>
+                        </tr>
+                    </table>
+                    
+                )}
+            </div>
         </div>
     );
 }
