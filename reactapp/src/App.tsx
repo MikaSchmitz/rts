@@ -1,9 +1,9 @@
-import EventComponent from './events/EventComponent';
+import UserSearch from "./state/UserSearch";
 
 const App = () => {
 	return (
 		<div>
-			<EventComponent />
+			<UserSearch />
 		</div>
 	);
 }
